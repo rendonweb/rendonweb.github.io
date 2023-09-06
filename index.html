@@ -1,375 +1,653 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Base - Tailwind CSS Startup Template</title>
-    <link rel="icon" href="favicon.ico"><link href="style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landmark</title>
+    <link rel="icon" href="images/steven-isotipo.png">
+    <!--
+        For more customization options, we would advise
+        you to build your TailwindCSS from the source.
+        https://tailwindcss.com/docs/installation
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.2/tailwind.min.css">
+    <script src="https://kit.fontawesome.com/b864913874.js" crossorigin="anonymous"></script>
+    <!-- Small CSS to Hide elements at 1520px size -->
+    <style>
+        @media(max-width:1520px) {
+            .left-svg {
+                display: none;
+            }
+        }
+
+        /* small css for the mobile nav close */
+        #nav-mobile-btn.close span:first-child {
+            transform: rotate(45deg);
+            top: 4px;
+            position: relative;
+            background: #a0aec0;
+        }
+
+        #nav-mobile-btn.close span:nth-child(2) {
+            transform: rotate(-45deg);
+            margin-top: 0px;
+            background: #a0aec0;
+        }
+    </style>
     <script src="//code.jivosite.com/widget/9I03c6xQM3" async></script>
-  </head>
-  <script src="//code.jivosite.com/widget/9I03c6xQM3" async></script>
-  <body
-    x-data="{ page: 'home', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
-    x-init="
-         darkMode = JSON.parse(localStorage.getItem('darkMode'));
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-    :class="{'b eh': darkMode === true}"
-  >
-    <!-- ===== Header Start ===== -->
-    <header
-  class="g s r vd ya cj"
-  :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
-  @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false"
->
-  <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
-    <div class="vd to/4 tc wf yf">
-      <a href="index.html">
-        <img class="om" src="images/w-ss-logo.png" alt="Logo Light" width="60" />
-      </a>
-
-      <!-- Hamburger Toggle BTN -->
-      <button class="po rc" @click="navigationOpen = !navigationOpen">
-        <span class="rc i pf re pd">
-          <span class="du-block h q vd yc">
-            <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
-            <span class="rc i r s eh um tg te rd eb ml jl fl" :class="{ 'ue qr': !navigationOpen }"></span>
-            <span class="rc i r s eh um tg te rd eb ml jl gl" :class="{ 'ue hl': !navigationOpen }"></span>
-          </span>
-          <span class="du-block h q vd yc lf">
-            <span class="rc eh um tg ml jl el h na r ve yc" :class="{ 'sd dl': !navigationOpen }"></span>
-            <span class="rc eh um tg ml jl qr h s pa vd rd" :class="{ 'sd rr': !navigationOpen }"></span>
-          </span>
-        </span>
-      </button>
-      <!-- Hamburger Toggle BTN -->
-    </div>
-
-    <div
-      class="vd wo/4 sd qo f ho oo wf yf"
-      :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }"
-    >
-      <nav>
-        <ul class="tc _o sf yo cg ep">
-          <li><a href="index.html" class="xl" :class="{ 'mk': page === 'home' }">Inicio</a></li>
-          <li><a href="index.html#features" class="xl">Carateristicas</a></li>
-          <li><a href="index.html#quality" class="xl">Calidad</a></li>
-        </ul>
-      </nav>
-
-      <div class="tc wf ig pb no">
-        <div class="pc h io pa ra" :class="navigationOpen ? '!-ud-visible' : 'd'">
-          <label class="rc ab i">
-            <input type="checkbox" :value="darkMode" @change="darkMode = !darkMode" class="pf vd yc uk h r za ab" />
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-    <!-- ===== Header End ===== -->
-
-    <main>
-      <!-- ===== Hero Start ===== -->
-      <section class="gj do ir hj sp jr i pg">
-        <!-- Hero Images -->
-        <div class="xc fn zd/2 2xl:ud-w-187.5 bd 2xl:ud-h-171.5 h q r">
-          <img src="images/shape-01.svg" alt="shape" class="xc 2xl:ud-block h t -ud-left-[10%] ua" />
-          <img src="images/shape-02.svg" alt="shape" class="xc 2xl:ud-block h u p va" />
-          <img src="images/shape-03.svg" alt="shape" class="xc 2xl:ud-block h v w va" />
-          <img src="images/shape-04.svg" alt="shape" class="h q r" />
-          <img src="images/hero.png" alt="Woman" class="h q r ua" />
-        </div>
-
-        <!-- Hero Content -->
-        <div class="bb ze ki xn 2xl:ud-px-0">
-          <div class="tc _o">
-            <div class="animate_left jn/2">
-              <h1 class="fk vj zp or kk wm wb">Bienvenido a <u>W-SS</u> Transformando Ideas en Realidad Digital.</h1>
-              <p class="fq">
-                En W-SS, creemos en el poder de la innovación a través de la tecnología. Somos más que una empresa de desarrollo de software a medida; somos tus socios en el viaje hacia la excelencia digital. Imagina, diseña y construye con nosotros.
-              </p>
-
-              <div class="tc tf yo zf mb">
-                <a href="#" class="ek jk lk gh gi hi rg ml il vc _d _l"
-                  >¡Comencemos!</a
-                >
-
-                <span class="tc sf">
-                  <a href="#" class="inline-block ek xj kk wm"> Llamanos 318-614-7407 </a>
-                  <span class="inline-block">Para cualquier duda o inquietud</span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- ===== Hero End ===== -->
-
-      <!-- ===== Small Features Start ===== -->
-      <section id="features">
-        <div class="bb ze ki yn 2xl:ud-px-12.5">
-          <div class="tc uf zo xf ap zf bp mq">
-            <!-- Small Features Item -->
-            <div class="animate_top kn to/3 tc cg oq">
-              <div class="tc wf xf cf ae cd rg mh">
-                <img src="images/icon-03.svg" alt="Icon" />
-              </div>
-              <div>
-                <h4 class="ek yj go kk wm xb">Análisis de Negocios</h4>
-                <p>Desentrañamos desafíos, convertimos metas en soluciones empresariales.</p>
-              </div>
-            </div>
-
-            <!-- Small Features Item -->
-            <div class="animate_top kn to/3 tc cg oq">
-              <div class="tc wf xf cf ae cd rg nh">
-                <img src="images/icon-01.svg" alt="Icon" />
-              </div>
-              <div>
-                <h4 class="ek yj go kk wm xb">Diseño de Software</h4>
-                <p>Diseño intuitivo, experiencias que enamoran desde el primer clic.</p>
-              </div>
-            </div>
-
-            <!-- Small Features Item -->
-            <div class="animate_top kn to/3 tc cg oq">
-              <div class="tc wf xf cf ae cd rg oh">
-                <img src="images/icon-02.svg" alt="Icon" />
-              </div>
-              <div>
-                <h4 class="ek yj go kk wm xb">Desarrollo Web</h4>
-                <p>Desarrollo robusto, seguro y escalable, logros tangibles, calidad insuperable.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- ===== Small Features End ===== -->
-
-      <!-- ===== About Start ===== -->
-      <section class="ji gp uq 2xl:ud-py-35 pg">
-        <div class="bb ze ki xn wq">
-          <div class="tc wf gg qq">
-            <!-- About Images -->
-            <div class="animate_left xc gn gg jn/2 i">
-              <div>
-                <img src="images/shape-05.svg" alt="Shape" class="h -ud-left-5 x" />
-                <img src="images/about-01.png" alt="About" class="ib" />
-                <img src="images/about-02.png" alt="About" />
-              </div>
-              <div>
-                <img src="images/shape-06.svg" alt="Shape" />
-                <img src="images/about-03.png" alt="About" class="ob gb" />
-                <img src="images/shape-07.svg" alt="Shape" class="bb" />
-              </div>
-            </div>
-
-            <!-- About Content -->
-            <div class="animate_right jn/2">
-              <h4 class="ek yj mk gb">¿Por qué Elegirnos?</h4>
-              <h2 class="fk vj zp pr kk wm qb">Tu éxito es nuestra pasión; convertimos visiones en soluciones tangibles.</h2>
-              <p class="uo">Cada proyecto que emprendemos es único, diseñado específicamente para satisfacer tus necesidades. No hay soluciones prefabricadas, solo soluciones hechas a medida que se ajustan a tu visión.</p>
-
-              <a href="https://www.youtube.com/watch?v=xcJtL7QggTI" data-fslightbox class="vc wf hg mb">
-                <span class="tc wf xf be dd rg i gh ua">
-                  <span class="nf h vc yc vd rg gh qk -ud-z-1"></span>
-                  <img src="images/icon-play.svg" alt="Play" />
-                </span>
-                <span class="kk">SEE HOW WE WORK</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- ===== About End ===== -->
-
-      <!-- ===== Team Start ===== -->
-      <section class="i pg ji gp uq">
-
-        <img src="images/shape-08.svg" alt="Shape Bg" class="h q r" />
-        <img src="images/shape-09.svg" alt="Shape" class="of h y z/2" />
-        <img src="images/shape-10.svg" alt="Shape" class="h _ aa" />
-        <img src="images/shape-11.svg" alt="Shape" class="of h m ba" />
-
-      </section>
-      <!-- ===== Team End ===== -->
-
-      <!-- ===== Services Start ===== -->
-      <section class="lj tp kr" id="quality">
-        <!-- Section Title Start -->
+</head>
+<body class="overflow-x-hidden antialiased">
+    <!-- Header Section -->
+    <header class="relative z-50 w-full h-24">
         <div
-          x-data="{ sectionTitle: `Compromiso con la Calidad:`, sectionTitleText: `La calidad es nuestra máxima prioridad. No lanzamos un proyecto hasta que estemos seguros de que cumple con los más altos estándares de rendimiento, seguridad y usabilidad.`}"
-        >
-          <div class="animate_top bb ze rj ki xn vq">
-    <h2
-            x-text="sectionTitle"
-            class="fk vj pr kk wm on/5 gq/2 bb _b"
-    >
-    </h2>
-    <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
-</div>
+            class="container flex items-center justify-center h-full max-w-6xl px-8 mx-auto sm:justify-between xl:px-0">
 
+            <a href="/" class="relative flex items-center inline-block h-5 h-full font-black leading-none">
+                <img src="images/steven-logo.png" class="w-1/2 mt-5" alt="">
+            </a>
+
+            <nav id="nav"
+                class="absolute top-0 left-0 z-50 flex flex-col items-center justify-between hidden w-full h-64 pt-5 mt-24 text-sm text-gray-800 bg-white border-t border-gray-200 md:w-auto md:flex-row md:h-24 lg:text-base md:bg-transparent md:mt-0 md:border-none md:py-0 md:flex md:relative">
+                <a href="#"
+                    class="ml-0 mr-0 font-bold duration-100 md:ml-12 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Inicio</a>
+                <a href="#features"
+                    class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Servicios</a>
+                <a href="#pricing"
+                    class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Metodología</a>
+                <div class="flex flex-col block w-full font-medium border-t border-gray-200 md:hidden">
+                    <a href="#_" class="w-full py-2 font-bold text-center text-pink-500">Login</a>
+                    <a href="#_"
+                        class="relative inline-block w-full px-5 py-3 text-sm leading-none text-center text-white bg-indigo-700 fold-bold">Get
+                        Started</a>
+                </div>
+            </nav>
+
+            <div
+                class="absolute left-0 flex-col items-center justify-center hidden w-full pb-8 mt-48 border-b border-gray-200 md:relative md:w-auto md:bg-transparent md:border-none md:mt-0 md:flex-row md:p-0 md:items-end md:flex md:justify-between">
+                <a href="#_"
+                    class="relative z-40 px-3 py-2 mr-0 text-sm font-bold text-pink-500 md:px-5 lg:text-white sm:mr-3 md:mt-0">Login</a>
+                <a href="https://wa.me/3186147407" target="_blank"
+                    class="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-green-500 hover:bg-green-600 rounded shadow-md fold-bold sm:w-full lg:shadow-none hover:shadow-xl"><i class="fa fa-whatsapp text-xl mx-2"></i> 318 614 7407</a>
+                <svg class="absolute top-0 left-0 hidden w-screen max-w-3xl -mt-64 -ml-12 lg:block"
+                    viewBox="0 0 818 815" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="c">
+                            <stop stop-color="#E614F2" offset="0%" />
+                            <stop stop-color="#FC3832" offset="100%" />
+                        </linearGradient>
+                        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="f">
+                            <stop stop-color="#657DE9" offset="0%" />
+                            <stop stop-color="#1C0FD7" offset="100%" />
+                        </linearGradient>
+                        <filter x="-4.7%" y="-3.3%" width="109.3%" height="109.3%" filterUnits="objectBoundingBox"
+                            id="a">
+                            <feOffset dy="8" in="SourceAlpha" result="shadowOffsetOuter1" />
+                            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+                            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0" in="shadowBlurOuter1" />
+                        </filter>
+                        <filter x="-4.7%" y="-3.3%" width="109.3%" height="109.3%" filterUnits="objectBoundingBox"
+                            id="d">
+                            <feOffset dy="8" in="SourceAlpha" result="shadowOffsetOuter1" />
+                            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+                            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" in="shadowBlurOuter1" />
+                        </filter>
+                        <path
+                            d="M160.52 108.243h497.445c17.83 0 24.296 1.856 30.814 5.342 6.519 3.486 11.635 8.602 15.12 15.12 3.487 6.52 5.344 12.985 5.344 30.815v497.445c0 17.83-1.857 24.296-5.343 30.814-3.486 6.519-8.602 11.635-15.12 15.12-6.52 3.487-12.985 5.344-30.815 5.344H160.52c-17.83 0-24.296-1.857-30.814-5.343-6.519-3.486-11.635-8.602-15.12-15.12-3.487-6.52-5.343-12.985-5.343-30.815V159.52c0-17.83 1.856-24.296 5.342-30.814 3.486-6.519 8.602-11.635 15.12-15.12 6.52-3.487 12.985-5.343 30.815-5.343z"
+                            id="b" />
+                        <path
+                            d="M159.107 107.829H656.55c17.83 0 24.296 1.856 30.815 5.342 6.518 3.487 11.634 8.602 15.12 15.12 3.486 6.52 5.343 12.985 5.343 30.816V656.55c0 17.83-1.857 24.296-5.343 30.815-3.486 6.518-8.602 11.634-15.12 15.12-6.519 3.486-12.985 5.343-30.815 5.343H159.107c-17.83 0-24.297-1.857-30.815-5.343-6.519-3.486-11.634-8.602-15.12-15.12-3.487-6.519-5.343-12.985-5.343-30.815V159.107c0-17.83 1.856-24.297 5.342-30.815 3.487-6.519 8.602-11.634 15.12-15.12 6.52-3.487 12.985-5.343 30.816-5.343z"
+                            id="e" />
+                    </defs>
+                    <g fill="none" fill-rule="evenodd" opacity=".9">
+                        <g transform="rotate(65 416.452 409.167)">
+                            <use fill="#000" filter="url(#a)" xlink:href="#b" />
+                            <use fill="url(#c)" xlink:href="#b" />
+                        </g>
+                        <g transform="rotate(29 421.929 414.496)">
+                            <use fill="#000" filter="url(#d)" xlink:href="#e" />
+                            <use fill="url(#f)" xlink:href="#e" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <div id="nav-mobile-btn"
+                class="absolute top-0 right-0 z-50 block w-6 mt-8 mr-10 cursor-pointer select-none md:hidden sm:mt-10">
+                <span class="block w-full h-1 mt-2 duration-200 transform bg-gray-800 rounded-full sm:mt-1"></span>
+                <span class="block w-full h-1 mt-1 duration-200 transform bg-gray-800 rounded-full"></span>
+            </div>
 
         </div>
-        <!-- Section Title End -->
+    </header>
+    <!-- End Header Section-->
 
-        <div class="bb ze ki xn yq mb en">
-          <div class="wc qf pn xo ng">
-            <!-- Service Item -->
-            <div class="animate_top sg oi pi zq ml il am cn _m">
-              <img src="images/icon-04.svg" alt="Icon" />
-              <h4 class="ek zj kk wm nb _b">Desarrollo a Medida</h4>
-              <p>Creamos soluciones específicas que se ajustan perfectamente a tus necesidades empresariales.</p>
-            </div>
-
-            <!-- Service Item -->
-            <div class="animate_top sg oi pi zq ml il am cn _m">
-              <img src="images/icon-05.svg" alt="Icon" />
-              <h4 class="ek zj kk wm nb _b">Técnicas de Planeación Avanzadas</h4>
-              <p>Utilizamos análisis de negocios sólidos para garantizar resultados efectivos.</p>
-            </div>
-
-            <!-- Service Item -->
-            <div class="animate_top sg oi pi zq ml il am cn _m">
-              <img src="images/icon-06.svg" alt="Icon" />
-              <h4 class="ek zj kk wm nb _b">Software en la Nube</h4>
-              <p>Ofrecemos soluciones ágiles y escalables en la nube para la máxima flexibilidad.</p>
-            </div>
-
-            <!-- Service Item -->
-            <div class="animate_top sg oi pi zq ml il am cn _m">
-              <img src="images/icon-07.svg" alt="Icon" />
-              <h4 class="ek zj kk wm nb _b">Plataformas Web Intuitivas</h4>
-              <p>Diseñamos interfaces de usuario simples y atractivas para una experiencia de usuario excepcional.</p>
-            </div>
-
-            <!-- Service Item -->
-            <div class="animate_top sg oi pi zq ml il am cn _m">
-              <img src="images/icon-05.svg" alt="Icon" />
-              <h4 class="ek zj kk wm nb _b">Bases de Datos Eficientes</h4>
-              <p>Implementamos bases de datos robustas para un rendimiento óptimo y seguridad.</p>
-            </div>
-
-            <!-- Service Item -->
-            <div class="animate_top sg oi pi zq ml il am cn _m">
-              <img src="images/icon-06.svg" alt="Icon" />
-              <h4 class="ek zj kk wm nb _b">Desarrollo Rápido con Calidad</h4>
-              <p>Entregamos soluciones rápidas sin comprometer la calidad y la eficiencia.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- ===== Services End ===== -->
-
-      <!-- ===== Pricing Table Start ===== -->
-      <section x-data="setup()" class="i pg fh rm ji gp uq">
-        <!-- Bg Shapes -->
-        <img src="images/shape-06.svg" alt="Shape" class="h aa y" />
-        <img src="images/shape-03.svg" alt="Shape" class="h ca u" />
-        <img src="images/shape-07.svg" alt="Shape" class="h w da ee" />
-        <img src="images/shape-12.svg" alt="Shape" class="h p s" />
-        <img src="images/shape-13.svg" alt="Shape" class="h r q" />
-
-        <!-- Section Title Start -->
+    <!-- BEGIN HERO SECTION -->
+    <div class="relative items-center justify-center w-full overflow-x-hidden lg:pt-40 lg:pb-40 xl:pt-40 xl:pb-64">
         <div
-          x-data="{ sectionTitle: `¡Tu Satisfacción, Nuestra Prioridad! Descubre Nuestra Revolucionaria Forma de Pago`, sectionTitleText: `En W-SS, hemos transformado la forma en que te relacionas con el desarrollo de software. Nos enorgullece presentar nuestro innovador sistema de cobro por proyectos a medida, diseñado pensando en ti, nuestro valioso cliente.`}"
-        >
-          <div class="animate_top bb ze rj ki xn vq">
-    <h2
-            x-text="sectionTitle"
-            class="fk vj pr kk wm on/5 gq/2 bb _b"
-    >
-    </h2>
-    <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
-</div>
+            class="container flex flex-col items-center justify-between h-full max-w-6xl px-8 mx-auto -mt-48 lg:flex-row xl:px-0">
+            <div
+                class="z-30 flex flex-col items-center w-full max-w-xl pt-48 text-center lg:items-start lg:w-1/2 lg:pt-20 xl:pt-40 lg:text-left">
+                <h1 class="relative mb-4 text-3xl font-black leading-tight text-gray-900 sm:text-6xl xl:mb-8">Soluciones Digitales Empresariales a la Medida</h1>
+                <p class="pr-0 mb-8 text-base text-gray-600 sm:text-lg xl:text-xl lg:pr-20">¡Bienvenido al mundo de la innovación tecnológica! Soy Steven Rendón, y estoy aquí para transformar tus desafíos en soluciones empresariales de vanguardia.</p>
+                <a href="#features"
+                    class="relative self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-indigo-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0">!Comencemos!</a>
+                <!-- Integrates with section -->
+                <div class="flex-col hidden mt-12 sm:flex lg:mt-24">
+                    <p class="mb-4 text-sm font-medium tracking-widest text-gray-500 uppercase">Stack Tecnológico</p>
+                    <div class="flex">
+                        <svg class="mr-4" xmlns="http://www.w3.org/2000/svg" height="2.5em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a7aaae}</style><path d="M320 104.5c171.4 0 303.2 72.2 303.2 151.5S491.3 407.5 320 407.5c-171.4 0-303.2-72.2-303.2-151.5S148.7 104.5 320 104.5m0-16.8C143.3 87.7 0 163 0 256s143.3 168.3 320 168.3S640 349 640 256 496.7 87.7 320 87.7zM218.2 242.5c-7.9 40.5-35.8 36.3-70.1 36.3l13.7-70.6c38 0 63.8-4.1 56.4 34.3zM97.4 350.3h36.7l8.7-44.8c41.1 0 66.6 3 90.2-19.1 26.1-24 32.9-66.7 14.3-88.1-9.7-11.2-25.3-16.7-46.5-16.7h-70.7L97.4 350.3zm185.7-213.6h36.5l-8.7 44.8c31.5 0 60.7-2.3 74.8 10.7 14.8 13.6 7.7 31-8.3 113.1h-37c15.4-79.4 18.3-86 12.7-92-5.4-5.8-17.7-4.6-47.4-4.6l-18.8 96.6h-36.5l32.7-168.6zM505 242.5c-8 41.1-36.7 36.3-70.1 36.3l13.7-70.6c38.2 0 63.8-4.1 56.4 34.3zM384.2 350.3H421l8.7-44.8c43.2 0 67.1 2.5 90.2-19.1 26.1-24 32.9-66.7 14.3-88.1-9.7-11.2-25.3-16.7-46.5-16.7H417l-32.8 168.7z"/></svg>
+                        <svg class="mr-4" xmlns="http://www.w3.org/2000/svg" height="2.5em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a7aaae}</style><path d="M504.4,115.83a5.72,5.72,0,0,0-.28-.68,8.52,8.52,0,0,0-.53-1.25,6,6,0,0,0-.54-.71,9.36,9.36,0,0,0-.72-.94c-.23-.22-.52-.4-.77-.6a8.84,8.84,0,0,0-.9-.68L404.4,55.55a8,8,0,0,0-8,0L300.12,111h0a8.07,8.07,0,0,0-.88.69,7.68,7.68,0,0,0-.78.6,8.23,8.23,0,0,0-.72.93c-.17.24-.39.45-.54.71a9.7,9.7,0,0,0-.52,1.25c-.08.23-.21.44-.28.68a8.08,8.08,0,0,0-.28,2.08V223.18l-80.22,46.19V63.44a7.8,7.8,0,0,0-.28-2.09c-.06-.24-.2-.45-.28-.68a8.35,8.35,0,0,0-.52-1.24c-.14-.26-.37-.47-.54-.72a9.36,9.36,0,0,0-.72-.94,9.46,9.46,0,0,0-.78-.6,9.8,9.8,0,0,0-.88-.68h0L115.61,1.07a8,8,0,0,0-8,0L11.34,56.49h0a6.52,6.52,0,0,0-.88.69,7.81,7.81,0,0,0-.79.6,8.15,8.15,0,0,0-.71.93c-.18.25-.4.46-.55.72a7.88,7.88,0,0,0-.51,1.24,6.46,6.46,0,0,0-.29.67,8.18,8.18,0,0,0-.28,2.1v329.7a8,8,0,0,0,4,6.95l192.5,110.84a8.83,8.83,0,0,0,1.33.54c.21.08.41.2.63.26a7.92,7.92,0,0,0,4.1,0c.2-.05.37-.16.55-.22a8.6,8.6,0,0,0,1.4-.58L404.4,400.09a8,8,0,0,0,4-6.95V287.88l92.24-53.11a8,8,0,0,0,4-7V117.92A8.63,8.63,0,0,0,504.4,115.83ZM111.6,17.28h0l80.19,46.15-80.2,46.18L31.41,63.44Zm88.25,60V278.6l-46.53,26.79-33.69,19.4V123.5l46.53-26.79Zm0,412.78L23.37,388.5V77.32L57.06,96.7l46.52,26.8V338.68a6.94,6.94,0,0,0,.12.9,8,8,0,0,0,.16,1.18h0a5.92,5.92,0,0,0,.38.9,6.38,6.38,0,0,0,.42,1v0a8.54,8.54,0,0,0,.6.78,7.62,7.62,0,0,0,.66.84l0,0c.23.22.52.38.77.58a8.93,8.93,0,0,0,.86.66l0,0,0,0,92.19,52.18Zm8-106.17-80.06-45.32,84.09-48.41,92.26-53.11,80.13,46.13-58.8,33.56Zm184.52,4.57L215.88,490.11V397.8L346.6,323.2l45.77-26.15Zm0-119.13L358.68,250l-46.53-26.79V131.79l33.69,19.4L392.37,178Zm8-105.28-80.2-46.17,80.2-46.16,80.18,46.15Zm8,105.28V178L455,151.19l33.68-19.4v91.39h0Z"/></svg>
+                        <svg class="mr-4" xmlns="http://www.w3.org/2000/svg" height="2.5em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a7aaae}</style><path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/></svg>
+                        <svg class="mr-4" xmlns="http://www.w3.org/2000/svg" height="2.5em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a7aaae}</style><path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/></svg>
+                        <svg class="mr-4" xmlns="http://www.w3.org/2000/svg" height="2.5em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a7aaae}</style><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="2.5em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a7aaae}</style><path d="M87 481.8h73.7v-73.6H87zM25.4 346.6v61.6H87v-61.6zm466.2-169.7c-23-74.2-82.4-133.3-156.6-156.6C164.9-32.8 8 93.7 8 255.9h95.8c0-101.8 101-180.5 208.1-141.7 39.7 14.3 71.5 46.1 85.8 85.7 39.1 107-39.7 207.8-141.4 208v.3h-.3V504c162.6 0 288.8-156.8 235.6-327.1zm-235.3 231v-95.3h-95.6v95.6H256v-.3z"/></svg>
 
+                    </div>
+                </div>
+                <svg class="absolute left-0 max-w-md mt-24 -ml-64 left-svg" viewBox="0 0 423 423"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <linearGradient x1="100%" y1="0%" x2="4.48%" y2="0%" id="linearGradient-1">
+                            <stop stop-color="#5C54DB" offset="0%" />
+                            <stop stop-color="#6A82E7" offset="100%" />
+                        </linearGradient>
+                        <filter x="-9.3%" y="-6.7%" width="118.7%" height="118.7%" filterUnits="objectBoundingBox"
+                            id="filter-3">
+                            <feOffset dy="8" in="SourceAlpha" result="shadowOffsetOuter1" />
+                            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+                            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" in="shadowBlurOuter1" />
+                        </filter>
+                        <rect id="path-2" x="63" y="504" width="300" height="300" rx="40" />
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity=".9">
+                        <g id="Desktop-HD" transform="translate(-39 -531)">
+                            <g id="Hero" transform="translate(43 83)">
+                                <g id="Rectangle-6" transform="rotate(45 213 654)">
+                                    <use fill="#000" filter="url(#filter-3)" xlink:href="#path-2" />
+                                    <use fill="url(#linearGradient-1)" xlink:href="#path-2" />
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <div class="relative z-50 flex flex-col items-end justify-center w-full h-full lg:w-1/2 ms:pl-10">
+                <div class="container relative left-0 w-full max-w-4xl lg:absolute xl:max-w-6xl lg:w-screen">
+                    <img src="images/macbook-mockup.png"
+                        class="w-full h-auto mt-20 mb-20 ml-0 lg:mt-24 xl:mt-40 lg:mb-0 lg:h-full lg:-ml-12">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- HERO SECTION END -->
+
+    <!-- BEGIN FEATURES SECTION -->
+    <div id="features" class="relative w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
+        <div class="container flex flex-col items-center justify-between h-full max-w-6xl mx-auto">
+            <h3
+                class="max-w-2xl px-5 mt-2 text-3xl font-black leading-tight text-center text-gray-900 sm:mt-0 sm:px-0 sm:text-6xl">
+                Optimizando Procesos con Software a Medida</h3>
+            <div class="flex flex-col w-full mt-0 lg:flex-row sm:mt-10 lg:mt-20">
+
+                <div class="w-full max-w-md p-4 mx-auto mb-0 sm:mb-16 lg:mb-0 lg:w-1/3">
+                    <div class="relative flex flex-col items-center justify-center w-full h-full p-20 mr-5 rounded-lg">
+                        <svg class="absolute w-full h-full text-gray-100 fill-current" viewBox="0 0 377 340"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <g>
+                                    <path
+                                        d="M342.8 3.7c24.7 14 18.1 75 22.1 124s18.6 85.8 8.7 114.2c-9.9 28.4-44.4 48.3-76.4 62.4-32 14.1-61.6 22.4-95.9 28.9-34.3 6.5-73.3 11.1-95.5-6.2-22.2-17.2-27.6-56.5-47.2-96C38.9 191.4 5 151.5.9 108.2-3.1 64.8 22.7 18 61.8 8.7c39.2-9.2 91.7 19 146 16.6 54.2-2.4 110.3-35.6 135-21.6z" />
+                                </g>
+                            </g>
+                        </svg>
+                        <!-- FEATURE Icon 1 -->
+                        <svg class="relative w-20 h-20" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs>
+                                <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1TriangleIcon1">
+                                    <stop stop-color="#9C09DB" offset="0%" />
+                                    <stop stop-color="#1C0FD7" offset="100%" />
+                                </linearGradient>
+                                <filter x="-14%" y="-10%" width="128%" height="128%" filterUnits="objectBoundingBox"
+                                    id="filter-3TriangleIcon1">
+                                    <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+                                    <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1"
+                                        result="shadowBlurOuter1" />
+                                    <feColorMatrix
+                                        values="0 0 0 0 0.141176471 0 0 0 0 0.031372549 0 0 0 0 0.501960784 0 0 0 0.15 0"
+                                        in="shadowBlurOuter1" />
+                                </filter>
+                                <path
+                                    d="M17.947 0h14.106c6.24 0 8.503.65 10.785 1.87a12.721 12.721 0 015.292 5.292C49.35 9.444 50 11.707 50 17.947v14.106c0 6.24-.65 8.503-1.87 10.785a12.721 12.721 0 01-5.292 5.292C40.556 49.35 38.293 50 32.053 50H17.947c-6.24 0-8.503-.65-10.785-1.87a12.721 12.721 0 01-5.292-5.292C.65 40.556 0 38.293 0 32.053V17.947c0-6.24.65-8.503 1.87-10.785A12.721 12.721 0 017.162 1.87C9.444.65 11.707 0 17.947 0z"
+                                    id="path-2TriangleIcon1" />
+                            </defs>
+                            <g id="Page-1TriangleIcon1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Desktop-HDTriangleIcon1" transform="translate(-291 -1278)">
+                                    <g id="FeaturesTriangleIcon1" transform="translate(170 915)">
+                                        <g id="Group-9TriangleIcon1" transform="translate(0 365)">
+                                            <g id="Group-8TriangleIcon1" transform="translate(125)">
+                                                <g id="Rectangle-9TriangleIcon1">
+                                                    <use fill="#000" filter="url(#filter-3TriangleIcon1)"
+                                                        xlink:href="#path-2TriangleIcon1" />
+                                                    <use fill="url(#linearGradient-1TriangleIcon1)"
+                                                        xlink:href="#path-2TriangleIcon1" />
+                                                </g>
+                                                <g id="playTriangleIcon1" transform="translate(18 15)" fill="#FFF"
+                                                    fill-rule="nonzero">
+                                                    <path
+                                                        d="M9.432 2.023l8.919 14.879a1.05 1.05 0 01-.384 1.452 1.097 1.097 0 01-.548.146H-.42A1.07 1.07 0 01-1.5 17.44c0-.19.052-.375.15-.538L7.567 2.023a1.092 1.092 0 011.864 0z"
+                                                        id="TriangleIcon1" transform="rotate(90 8.5 10)" />
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <h4 class="relative mt-6 text-lg font-bold whitespace-nowrap text-center">Análisis de Negocio</h4>
+                    </div>
+                </div>
+
+                <div class="w-full max-w-md p-4 mx-auto mb-0 sm:mb-16 lg:mb-0 lg:w-1/3">
+                    <div class="relative flex flex-col items-center justify-center w-full h-full p-20 mr-5 rounded-lg">
+                        <svg class="absolute w-full h-full text-gray-100 fill-current" viewBox="0 0 358 372"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <g>
+                                    <path
+                                        d="M315.7 6.5c30.2 15.1 42.6 61.8 41.5 102.5-1.1 40.6-15.7 75.2-24.3 114.8-8.7 39.7-11.3 84.3-34.3 107.2-23 22.9-66.3 23.9-114.5 30.7-48.2 6.7-101.3 19.1-123.2-4.1-21.8-23.2-12.5-82.1-21.6-130.2C30.2 179.3 2.6 141.9.7 102c-2-39.9 21.7-82.2 57.4-95.6 35.7-13.5 83.3 2.1 131.2 1.7 47.9-.4 96.1-16.8 126.4-1.6z" />
+                                </g>
+                            </g>
+                        </svg>
+                        <!-- FEATURE Icon 2 -->
+                        <svg class="relative w-20 h-20" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs>
+                                <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1Icon2">
+                                    <stop stop-color="#F2C314" offset="0%" />
+                                    <stop stop-color="#FC3832" offset="100%" />
+                                </linearGradient>
+                                <filter x="-14%" y="-10%" width="128%" height="128%" filterUnits="objectBoundingBox"
+                                    id="filter-3Icon2">
+                                    <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+                                    <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1"
+                                        result="shadowBlurOuter1" />
+                                    <feColorMatrix
+                                        values="0 0 0 0 0.501960784 0 0 0 0 0.125490196 0 0 0 0 0 0 0 0 0.15 0"
+                                        in="shadowBlurOuter1" />
+                                </filter>
+                                <path
+                                    d="M17.947 0h14.106c6.24 0 8.503.65 10.785 1.87a12.721 12.721 0 015.292 5.292C49.35 9.444 50 11.707 50 17.947v14.106c0 6.24-.65 8.503-1.87 10.785a12.721 12.721 0 01-5.292 5.292C40.556 49.35 38.293 50 32.053 50H17.947c-6.24 0-8.503-.65-10.785-1.87a12.721 12.721 0 01-5.292-5.292C.65 40.556 0 38.293 0 32.053V17.947c0-6.24.65-8.503 1.87-10.785A12.721 12.721 0 017.162 1.87C9.444.65 11.707 0 17.947 0z"
+                                    id="path-2Icon2" />
+                            </defs>
+                            <g id="Page-1Icon2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Desktop-HDIcon2" transform="translate(-691 -1278)">
+                                    <g id="FeaturesIcon2" transform="translate(170 915)">
+                                        <g id="Group-9-CopyIcon2" transform="translate(400 365)">
+                                            <g id="Group-8Icon2" transform="translate(125)">
+                                                <g id="Rectangle-9Icon2">
+                                                    <use fill="#000" filter="url(#filter-3Icon2)"
+                                                        xlink:href="#path-2Icon2" />
+                                                    <use fill="url(#linearGradient-1Icon2)" xlink:href="#path-2Icon2" />
+                                                </g>
+                                                <g id="machine-learningIcon2" transform="translate(14 12)" fill="#FFF"
+                                                    fill-rule="nonzero">
+                                                    <path
+                                                        d="M10.554 21.418v-2.68c-1.1-.204-1.932-1.143-1.932-2.271 0-.468.143-.903.388-1.267l-2.32-1.662L4.367 15.2a2.254 2.254 0 01-.005 2.541l5.28 4.05c.268-.182.577-.311.911-.373zm.892 0c.334.062.643.191.912.373l5.28-4.05a2.254 2.254 0 01-.006-2.54l-2.321-1.663L12.99 15.2c.245.364.388.8.388 1.267 0 1.128-.832 2.067-1.932 2.27v2.681zm1.538.997c.25.365.394.803.394 1.274C13.378 24.965 12.314 26 11 26s-2.378-1.035-2.378-2.311c0-.471.145-.91.394-1.274l-5.28-4.05c-.385.26-.853.413-1.358.413C1.065 18.778 0 17.743 0 16.467c0-1.129.832-2.068 1.932-2.27v-2.393C.832 11.6 0 10.662 0 9.534c0-1.277 1.065-2.312 2.378-2.312.505 0 .973.153 1.358.414l5.28-4.05a2.254 2.254 0 01-.394-1.275C8.622 1.035 9.686 0 11 0s2.378 1.035 2.378 2.311c0 .471-.145.91-.394 1.274l5.28 4.05c.385-.26.853-.413 1.358-.413C20.935 7.222 22 8.257 22 9.533c0 1.129-.832 2.068-1.932 2.27v2.393c1.1.203 1.932 1.142 1.932 2.27 0 1.277-1.065 2.312-2.378 2.312-.505 0-.973-.153-1.358-.414l-5.28 4.05zm-9.243-7.843L5.937 13l-2.196-1.572c-.27.183-.58.314-.917.376v2.392c.336.062.647.193.917.376zm.627-3.772l2.321 1.662L9.01 10.8a2.254 2.254 0 01-.388-1.267c0-1.128.832-2.067 1.932-2.27V4.582a2.403 2.403 0 01-.912-.373l-5.28 4.05a2.254 2.254 0 01.006 2.54zm13.89 3.772c.27-.183.582-.314.918-.376v-2.392a2.403 2.403 0 01-.917-.376L16.063 13l2.196 1.572zm-.62-6.313l-5.28-4.05a2.403 2.403 0 01-.912.373v2.68c1.1.204 1.932 1.143 1.932 2.271 0 .468-.143.903-.388 1.267l2.32 1.662 2.322-1.662a2.254 2.254 0 01.005-2.541zm-8 6.313A2.415 2.415 0 0111 14.156c.507 0 .977.154 1.363.416L14.559 13l-2.196-1.572a2.415 2.415 0 01-1.363.416c-.507 0-.977-.154-1.363-.416L7.441 13l2.196 1.572zM11 10.978c.821 0 1.486-.647 1.486-1.445 0-.797-.665-1.444-1.486-1.444s-1.486.647-1.486 1.444c0 .798.665 1.445 1.486 1.445zm0 6.933c.821 0 1.486-.647 1.486-1.444 0-.798-.665-1.445-1.486-1.445s-1.486.647-1.486 1.445c0 .797.665 1.444 1.486 1.444zm8.622-6.933c.82 0 1.486-.647 1.486-1.445 0-.797-.665-1.444-1.486-1.444s-1.487.647-1.487 1.444c0 .798.666 1.445 1.487 1.445zm0 6.933c.82 0 1.486-.647 1.486-1.444 0-.798-.665-1.445-1.486-1.445s-1.487.647-1.487 1.445c0 .797.666 1.444 1.487 1.444zM2.378 10.978c.821 0 1.487-.647 1.487-1.445 0-.797-.666-1.444-1.487-1.444-.82 0-1.486.647-1.486 1.444 0 .798.665 1.445 1.486 1.445zm0 6.933c.821 0 1.487-.647 1.487-1.444 0-.798-.666-1.445-1.487-1.445-.82 0-1.486.647-1.486 1.445 0 .797.665 1.444 1.486 1.444zM11 25.133c.821 0 1.486-.646 1.486-1.444 0-.798-.665-1.445-1.486-1.445s-1.486.647-1.486 1.445.665 1.444 1.486 1.444zm0-21.377c.821 0 1.486-.647 1.486-1.445S11.821.867 11 .867s-1.486.646-1.486 1.444c0 .798.665 1.445 1.486 1.445z"
+                                                        id="ShapeIcon2" />
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <h4 class="relative mt-6 text-lg font-bold whitespace-nowrap text-center">Diseño de Software</h4>
+                    </div>
+                </div>
+
+                <div class="w-full max-w-md p-4 mx-auto mb-16 lg:mb-0 lg:w-1/3">
+                    <div class="relative flex flex-col items-center justify-center w-full h-full p-20 mr-5 rounded-lg">
+                        <svg class="absolute w-full h-full text-gray-100 fill-current" viewBox="0 0 378 410"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <g>
+                                    <path
+                                        d="M305.9 14.4c23.8 24.6 16.3 84.9 26.6 135.1 10.4 50.2 38.6 90.3 43.7 137.8 5.1 47.5-12.8 102.4-50.7 117.4-37.9 15.1-95.7-9.8-151.7-12.2-56.1-2.5-110.3 17.6-130-3.4-19.7-20.9-4.7-82.9-11.5-131.2C25.5 209.5-3 174.7 1.2 147c4.2-27.7 41-48.3 75-69.6C110.1 56.1 141 34.1 184 17.5c43.1-16.6 98.1-27.7 121.9-3.1z" />
+                                </g>
+                            </g>
+                        </svg>
+                        <!-- FEATURE Icon 3 -->
+                        <svg class="relative w-20 h-20" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs>
+                                <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1Icon3">
+                                    <stop stop-color="#32FBFC" offset="0%" />
+                                    <stop stop-color="#3214F2" offset="100%" />
+                                </linearGradient>
+                                <filter x="-14%" y="-10%" width="128%" height="128%" filterUnits="objectBoundingBox"
+                                    id="filter-3Icon3">
+                                    <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+                                    <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1"
+                                        result="shadowBlurOuter1" />
+                                    <feColorMatrix
+                                        values="0 0 0 0 0.031372549 0 0 0 0 0.149019608 0 0 0 0 0.658823529 0 0 0 0.15 0"
+                                        in="shadowBlurOuter1" />
+                                </filter>
+                                <path
+                                    d="M17.947 0h14.106c6.24 0 8.503.65 10.785 1.87a12.721 12.721 0 015.292 5.292C49.35 9.444 50 11.707 50 17.947v14.106c0 6.24-.65 8.503-1.87 10.785a12.721 12.721 0 01-5.292 5.292C40.556 49.35 38.293 50 32.053 50H17.947c-6.24 0-8.503-.65-10.785-1.87a12.721 12.721 0 01-5.292-5.292C.65 40.556 0 38.293 0 32.053V17.947c0-6.24.65-8.503 1.87-10.785A12.721 12.721 0 017.162 1.87C9.444.65 11.707 0 17.947 0z"
+                                    id="path-2Icon3" />
+                            </defs>
+                            <g id="Page-1Icon3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Desktop-HDIcon3" transform="translate(-1091 -1278)">
+                                    <g id="FeaturesIcon3" transform="translate(170 915)">
+                                        <g id="Group-9-Copy-2Icon3" transform="translate(800 365)">
+                                            <g id="Group-8Icon3" transform="translate(125)">
+                                                <g id="Rectangle-9Icon3">
+                                                    <use fill="#000" filter="url(#filter-3Icon3)"
+                                                        xlink:href="#path-2Icon3" />
+                                                    <use fill="url(#linearGradient-1Icon3)" xlink:href="#path-2Icon3" />
+                                                </g>
+                                                <g id="smart-notificationsIcon3" transform="translate(15 11)"
+                                                    fill="#FFF" fill-rule="nonzero">
+                                                    <path
+                                                        d="M12.519 3.243a6.808 6.808 0 00-.187 1.298h-8.44a2.595 2.595 0 00-2.595 2.594v12.973a2.595 2.595 0 002.595 2.595h12.973a2.595 2.595 0 002.594-2.595v-8.44c.445-.02.88-.084 1.298-.187v8.627A3.892 3.892 0 0116.865 24H3.892A3.892 3.892 0 010 20.108V7.135a3.892 3.892 0 013.892-3.892h8.627zm6.616 6.487a4.865 4.865 0 110-9.73 4.865 4.865 0 010 9.73z"
+                                                        id="IconIcon3" />
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <h4 class="relative mt-6 text-lg font-bold text-center">Software a la Medida</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END FEATURES SECTION -->
+
+
+
+
+    <!-- Pricing Section -->
+    <div class="relative px-8 py-10 bg-white border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
+
+        <div id="pricing" class="container flex flex-col items-center h-full max-w-6xl mx-auto">
+            <h3
+                class="w-full max-w-2xl px-5 px-8 mt-2 text-2xl font-black leading-tight text-center text-gray-900 sm:mt-0 sm:px-0 sm:text-6xl md:px-0 my-10">
+                Metodologia</h3>
+                <p class="my-6 text-xl font-medium text-gray-500">
+                    En el mundo digital de hoy, el éxito de tu negocio depende en gran medida de tres pilares fundamentales: el análisis de negocio, el diseño de software y la programación de software.
+                </p>
+
+            <div class="max-w-full mx-auto md:max-w-6xl sm:px-8">
+
+
+            <div id="accordion-open" data-accordion="open">
+            <h2 id="accordion-open-heading-1">
+                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-open-body-1" aria-expanded="true" aria-controls="accordion-open-body-1">
+                <span class="flex items-center"><svg class="w-5 h-5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg> ¿Que es análisis de negocios?</span>
+                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                </svg>
+                </button>
+            </h2>
+            <div id="accordion-open-body-1" class="hidden" aria-labelledby="accordion-open-heading-1">
+                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+                <p class="mb-2 text-gray-500 dark:text-gray-400">
+                    El análisis de negocio es el primer paso para comprender a fondo las necesidades y objetivos de tu empresa. Es la brújula que guía todo el proceso, ayudándote a tomar decisiones informadas y estratégicas. ¿Quieres optimizar tus operaciones, llegar a nuevos mercados o mejorar la experiencia de tus clientes o empleados? El análisis de negocio es la clave.
+                </p>
+                </div>
+            </div>
+            <h2 id="accordion-open-heading-2">
+                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-open-body-2" aria-expanded="false" aria-controls="accordion-open-body-2">
+                <span class="flex items-center"><svg class="w-5 h-5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>¿Que es diseño de software?</span>
+                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                </svg>
+                </button>
+            </h2>
+            <div id="accordion-open-body-2" class="hidden" aria-labelledby="accordion-open-heading-2">
+                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                <p class="mb-2 text-gray-500 dark:text-gray-400">
+                    El diseño de software es la manifestación de tus ideas y objetivos en una solución digital. Es donde la creatividad se une con la funcionalidad para crear experiencias impactantes. Desde interfaces intuitivas hasta arquitecturas sólidas, el diseño de software es la puerta de entrada a la satisfacción del cliente y la eficiencia empresarial.
+                </p>
+                </div>
+            </div>
+            <h2 id="accordion-open-heading-3">
+                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-open-body-3" aria-expanded="false" aria-controls="accordion-open-body-3">
+                <span class="flex items-center"><svg class="w-5 h-5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg> ¿Que implica la programación del software?</span>
+                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                </svg>
+                </button>
+            </h2>
+            <div id="accordion-open-body-3" class="hidden" aria-labelledby="accordion-open-heading-3">
+                <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
+                <p class="mb-2 text-gray-500 dark:text-gray-400">
+                    La programación de software es el motor que impulsa tus sueños digitales. Aquí es donde la magia cobra vida, donde los algoritmos y el código transforman conceptos en aplicaciones funcionales. Mi experiencia abarca múltiples lenguajes de programación y frameworks para hacer que tu visión cobre vida.
+                </p>
+                </div>
+            </div>
+            
+            </div>
+            
+                <div class="w-full px-4 my-10">
+                    <img src="images/code.jpg" alt="Imagen de ejemplo" class="mx-auto rounded-lg shadow-lg">
+                </div>
+
+                
+            </div>
+            <p class="my-6 text-xl text-base text-gray-600">
+                Estoy aquí para guiarte en cada etapa de este emocionante viaje tecnológico. Mi pasión es traducir tus desafíos en soluciones digitales que te ayuden a crecer y sobresalir en el mundo digital. ¿Estás listo para dar el siguiente paso? Contáctame hoy mismo y descubre cómo podemos impulsar juntos tu éxito.
+            </p>
 
         </div>
-        <!-- Section Title End -->
 
-        <div class="bb ze ki xn yq mb en">
-          <div class="wc qf pn xo ng">
-            <!-- Service Item -->
-            <div class="animate_top sg oi pi zq ml il am cn _m">
-              <img src="images/icon-04.svg" alt="Icon" />
-              <h4 class="ek zj kk wm nb _b">Tu Satisfacción es Nuestra Prioridad</h4>
-              <p>En wss, creemos en la excelencia y la satisfacción del cliente. Eliminamos la necesidad de anticipo porque estamos comprometidos con brindarte exactamente lo que necesitas. Solo pagarás cuando el proyecto esté completo y tú estés completamente satisfecho.</p>
-            </div>
+    </div>
+    <!-- End Pricing Section -->
 
-            <!-- Service Item -->
-            <div class="animate_top sg oi pi zq ml il am cn _m">
-              <img src="images/icon-05.svg" alt="Icon" />
-              <h4 class="ek zj kk wm nb _b">Minimiza Tu Riesgo</h4>
-              <p> Entendemos que dar el primer paso en un proyecto de desarrollo de software puede ser un desafío financiero. Con nuestra política de pago sin anticipo, eliminamos ese riesgo para ti. Inicia tu proyecto con total confianza, sabiendo que solo pagas por resultados concretos y exitosos.</p>
-            </div>
+    <!-- Start Testimonials -->
+ <!--    <div id="testimonials"
+        class="flex items-center justify-center w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex-col items-center ">
+                <div class="flex flex-col items-center justify-center w-full h-full max-w-2xl pr-8 mx-auto text-center">
+                    <p class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Our customers love
+                        our product
+                    </p>
+                    <h2
+                        class="text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl lg:text-5xl xl:text-6xl">
+                        Testimonials</h2>
+                    <p class="my-6 text-xl font-medium text-gray-500">Don't just take our word for it, read from our
+                        extensive
+                        list of case studies and customer testimonials.</p>
 
-            <!-- Service Item -->
-            <div class="animate_top sg oi pi zq ml il am cn _m">
-              <img src="images/icon-06.svg" alt="Icon" />
-              <h4 class="ek zj kk wm nb _b">Trabajo en Equipo y Transparencia</h4>
-              <p>Queremos que sientas que eres parte integral de todo el proceso. Al eliminar los pagos anticipados, fomentamos una colaboración más estrecha y una comunicación abierta. Tus comentarios y cambios son bienvenidos en cualquier momento, sin costos adicionales. Juntos, creamos una solución que supera tus expectativas.p>
+                </div>
+                <div class="flex flex-col items-center justify-center max-w-2xl py-8 mx-auto xl:flex-row xl:max-w-full">
+                    <div class="w-full xl:w-1/2 xl:pr-8">
+                        <blockquote
+                            class="flex flex-col-reverse items-center justify-between w-full col-span-1 p-6 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease">
+                            <div class="flex flex-col pr-8">
+                                <div class="relative pl-12">
+                                    <svg class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
+                                        <path
+                                            d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
+                                    </svg>
+                                    <p class="mt-2 text-base text-gray-600">I'm loving these templates! Very nice
+                                        features and layouts.
+                                    </p>
+                                </div>
+
+                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Sandra
+                                    Walton <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
+                                        SomeCompany</span></h3>
+                                <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
+                            </div>
+                            <img class="flex-shrink-0 object-cover w-24 h-24 mb-5 bg-gray-300 rounded-full md:mb-0"
+                                src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2694&q=80"
+                                alt="">
+                        </blockquote>
+                        <blockquote
+                            class="flex flex-col-reverse items-center justify-between w-full col-span-1 p-6 mt-16 mb-16 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease xl:mb-0">
+                            <div class="flex flex-col pr-10">
+                                <div class="relative pl-12">
+                                    <svg class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
+                                        <path
+                                            d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
+                                    </svg>
+                                    <p class="mt-2 text-base text-gray-600">Really digging this service. Now I can
+                                        quickly bootstrap any
+                                        project.</p>
+                                </div>
+                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Kenny
+                                    Jones <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
+                                        SomeCompany</span></h3>
+                                <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
+                            </div>
+                            <img class="flex-shrink-0 object-cover w-24 h-24 mb-5 bg-gray-300 rounded-full md:mb-0"
+                                src="https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"
+                                alt="">
+                        </blockquote>
+                    </div>
+                    <div class="w-full xl:w-1/2 xl:pl-8">
+                        <blockquote
+                            class="flex flex-col-reverse items-center justify-between w-full col-span-1 p-6 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease">
+                            <div class="flex flex-col pr-10">
+                                <div class="relative pl-12">
+                                    <svg class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
+                                        <path
+                                            d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
+                                    </svg>
+                                    <p class="mt-2 text-base text-gray-600">Extremely helpful in every single project we
+                                        have released.
+                                    </p>
+                                </div>
+
+                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Mike Smith
+                                    <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO SomeCompany</span>
+                                </h3>
+                                <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
+                            </div>
+                            <img class="flex-shrink-0 object-cover w-24 h-24 mb-5 bg-gray-300 rounded-full md:mb-0"
+                                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1700&q=80"
+                                alt="">
+                        </blockquote>
+                        <blockquote
+                            class="flex flex-col-reverse items-center justify-between w-full col-span-1 p-6 mt-16 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease">
+                            <div class="flex flex-col pr-10">
+                                <div class="relative pl-12">
+                                    <svg class="absolute left-0 w-10 h-10 text-indigo-500 fill-current"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
+                                        <path
+                                            d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
+                                    </svg>
+                                    <p class="mt-2 text-base text-gray-600">Finally a quick and easy system I can use
+                                        for any type of
+                                        project.</p>
+                                </div>
+
+                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Molly
+                                    Sanchez <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
+                                        SomeCompany</span></h3>
+                                <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
+                            </div>
+                            <img class="flex-shrink-0 object-cover w-24 h-24 mb-5 bg-gray-300 rounded-full md:mb-0"
+                                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80"
+                                alt="">
+                        </blockquote>
+                    </div>
+                </div>
+
+
             </div>
-          </div>
         </div>
+    </div> -->
+    <!-- End Testimonials-->
 
-      </section>
-      <!-- ===== Pricing Table End ===== -->
 
-</section>
+    <footer class="px-4 pt-12 pb-8 text-white bg-white border-t border-gray-200">
+        <div class="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
+            <div class="w-full pl-12 mr-4 text-left lg:w-1/4 sm:text-center sm:pl-0 lg:text-left">
+                <a href="/"
+                    class="flex justify-start block text-left sm:text-center lg:text-left sm:justify-center lg:justify-start">
+                    <img src="images/steven-isotipo.png" class="w-10" alt="">
+                    </span>
+                </a>
+                <p class="mt-6 mr-4 text-base text-gray-500">Imagina, diseña y construye conmigo.
+                </p>
+            </div>
+            <div class="block w-full pl-10 mt-6 text-sm lg:w-3/4 sm:flex lg:mt-0">
+                <ul class="flex flex-col w-full p-0 font-medium text-left text-gray-700 list-none">
+                    <li class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
+                        Enlaces</li>
+                    <li><a href="#_"
+                            class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Inicio</a>
+                    </li>
+                    <li><a href="#_"
+                            class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Servicios</a>
+                    </li>
+                    <li><a href="#_"
+                            class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Metodología</a>
+                    </li>
+                </ul>
+                <ul class="flex flex-col w-full p-0 font-medium text-left text-gray-700 list-none">
+                    <li class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
+                        Company</li>
+                    <li><a href="#_"
+                            class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Privacy</a>
+                    </li>
+                    <li><a href="#_" class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Terms
+                            of
+                            Service</a></li>
+                </ul>
 
-      <!-- ===== CTA End ===== -->
-    </main>
-    <footer>
-      <div class="logo-container">
-          <img src="images/w-ss-logo.png" alt="Logo de la empresa" class="logo">
-      </div>
-      <p>&copy; 2023 Web Solution Services</p>
-  </footer>
+                <div class="flex flex-col w-full text-gray-700">
+                    <div class="inline-block px-3 py-2 mt-5 font-bold text-gray-800 uppercase md:mt-0">Sígueme</div>
+                    <div class="flex justify-start pl-4 mt-2">
+                        <a class="flex items-center block mr-6 text-gray-400 no-underline hover:text-gray-600"
+                            target="_blank" rel="noopener noreferrer" href="https://devdojo.com">
+                            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z" />
+                            </svg>
+                        </a>
+                        <a class="flex items-center block text-gray-400 no-underline hover:text-gray-600"
+                            target="_blank" rel="noopener noreferrer" href="https://devdojo.com">
+                            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-4 pt-6 mt-10 text-center text-gray-500 border-t border-gray-100">© 2023 steven-rendon.github.io</div>
 
-    <!-- ===== Footer End ===== -->
+            <div class="pt-2 pt-4 mt-2 text-center text-gray-600 border-t border-gray-100">Distributed By <a href="https://themewagon.com/">Themewagon</a></div>
+    </footer>
 
-    <!-- ====== Back To Top Start ===== -->
-    <button
-  class="xc wf xf ie ld vg sr gh tr g sa ta _a"
-  @click="window.scrollTo({top: 0, behavior: 'smooth'})"
-  @scroll.window="scrollTop = (window.pageYOffset > 50) ? true : false"
-  :class="{ 'uc' : scrollTop }"
->
-  <svg class="uh se qd" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-    <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
-  </svg>
-</button>
-
-    <!-- ====== Back To Top End ===== -->
-
+    <!-- a little JS for the mobile nav button -->
     <script>
-      //  Pricing Table
-      const setup = () => {
-        return {
-          isNavOpen: false,
-
-          billPlan: 'monthly',
-
-          plans: [
-            {
-              name: 'Tu Satisfacción es Nuestra Prioridad',
-              content: 'En [Tu Empresa], creemos en la excelencia y la satisfacción del cliente. Eliminamos la necesidad de anticipo porque estamos comprometidos con brindarte exactamente lo que necesitas. Solo pagarás cuando el proyecto esté completo y tú estés completamente satisfecho.'
-            },
-            {
-              name: 'Minimiza Tu Riesgo',
-              content: 'Entendemos que dar el primer paso en un proyecto de desarrollo de software puede ser un desafío financiero. Con nuestra política de pago sin anticipo, eliminamos ese riesgo para ti. Inicia tu proyecto con total confianza, sabiendo que solo pagas por resultados concretos y exitosos.'
-            },
-            {
-              name: 'Trabajo en Equipo y Transparencia',
-              content: 'Queremos que sientas que eres parte integral de todo el proceso. Al eliminar los pagos anticipados, fomentamos una colaboración más estrecha y una comunicación abierta. Tus comentarios y cambios son bienvenidos en cualquier momento, sin costos adicionales. Juntos, creamos una solución que supera tus expectativas.'
-            },
-          ],
-        };
-      };
+        if (document.getElementById('nav-mobile-btn')) {
+            document.getElementById('nav-mobile-btn').addEventListener('click', function () {
+                if (this.classList.contains('close')) {
+                    document.getElementById('nav').classList.add('hidden');
+                    this.classList.remove('close');
+                } else {
+                    document.getElementById('nav').classList.remove('hidden');
+                    this.classList.add('close');
+                }
+            });
+        }
     </script>
-    <script defer src="bundle.js"></script></body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+</body>
 </html>
